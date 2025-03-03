@@ -31,5 +31,6 @@ export default function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-{/* <div>junayed</div> */}
+<div>junayed</div>
+
 export const useAuth = () => useContext(AuthContext);
