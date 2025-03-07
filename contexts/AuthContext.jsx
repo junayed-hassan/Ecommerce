@@ -31,17 +31,12 @@ export default function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-const user = {
-  name: 'Junaid',
-  age: 25,
-  skills: ['JavaScript', 'React', 'Node.js']
-};
 
-user.location = 'Dhaka';
-user.skills.push('Next.js');
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-console.log(user);
+const evenNumbers = numbers.filter(num => num % 2 === 0);
 
+console.log('Even numbers:', evenNumbers);
 
 
 export const useAuth = () => useContext(AuthContext);
