@@ -31,17 +31,17 @@ export default function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-async function fetchData() {
-  try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
-      const data = await response.json();
-      console.log(data);
-  } catch (error) {
-      console.error('Error fetching data:', error);
-  }
-}
+const user = {
+  name: 'Junaid',
+  age: 25,
+  skills: ['JavaScript', 'React', 'Node.js']
+};
 
-fetchData();
+user.location = 'Dhaka';
+user.skills.push('Next.js');
+
+console.log(user);
+
 
 
 export const useAuth = () => useContext(AuthContext);
