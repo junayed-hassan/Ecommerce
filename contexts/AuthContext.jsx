@@ -31,6 +31,17 @@ export default function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-<div>junayed</div>
+async function fetchData() {
+  try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+      const data = await response.json();
+      console.log(data);
+  } catch (error) {
+      console.error('Error fetching data:', error);
+  }
+}
+
+fetchData();
+
 
 export const useAuth = () => useContext(AuthContext);
