@@ -31,30 +31,29 @@ export default function AuthContextProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-// Create task element
-function createTaskElement(task) {
-  const li = document.createElement("li");
-  li.className = "task";
-  li.dataset.id = task.id;
-  if (task.completed) li.classList.add("completed");
-  
-  const span = document.createElement("span");
-  span.className = "task-text";
-  span.textContent = task.text;
-  li.appendChild(span);
-  
-  const editBtn = document.createElement("button");
-  editBtn.textContent = "Edit";
-  editBtn.onclick = () => editTask(li);
-  li.appendChild(editBtn);
-  
-  const delBtn = document.createElement("button");
-  delBtn.textContent = "Delete";
-  delBtn.onclick = () => deleteTask(li);
-  li.appendChild(delBtn);
-  
-  li.addEventListener("click", () => toggleComplete(li));
-  taskList.appendChild(li);
-}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const taskInput = document.getElementById("taskInput");
+  const addTaskButton = document.getElementById("addTaskButton");
+  const taskList = document.getElementById("taskList");
+
+  addTaskButton.addEventListener("click", function () {
+      if (taskInput.value.trim() === "") return;
+
+      const taskItem = document.createElement("li");
+      taskItem.textContent = taskInput.value;
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", function () {
+          taskList.removeChild(taskItem);
+      });
+
+      taskItem.appendChild(deleteButton);
+      taskList.appendChild(taskItem);
+
+      taskInput.value = "";
+  });
+});
 
 export const useAuth = () => useContext(AuthContext);
